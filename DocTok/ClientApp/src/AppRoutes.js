@@ -1,6 +1,7 @@
-import { Counter } from "./components/Counter";
+import Projects from "./components/projects/Projects.tsx";
 import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
+import { Home } from "./components/home/Home";
+import { Calendar } from "./components/calendar/calendar";
 
 const AppRoutes = [
   {
@@ -8,8 +9,12 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/counter',
-    element: <Counter />
+    path:'/calendar',
+    element: <Calendar />
+  },
+  {
+    path: '/projects',
+    element: <Projects />
   },
   {
     path: '/fetch-data',

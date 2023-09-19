@@ -1,7 +1,7 @@
 import Projects from "./components/projects/Projects.tsx";
-import { FetchData } from "./components/FetchData";
 import { Home } from "./components/home/Home";
 import { Calendar } from "./components/calendar/calendar";
+import { Documentation } from "./components/documentation/DocumentationDeprecated.js";
 
 const AppRoutes = [
   {
@@ -17,8 +17,8 @@ const AppRoutes = [
     element: <Projects />
   },
   {
-    path: '/fetch-data',
-    element: <FetchData />
+    path: '/documentation/:id',
+    element:  <Documentation/>
   }
 ];
 

@@ -12,10 +12,10 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("https://localhost:44416");  
-                      });
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:44416");  
+        });
 });
 
 builder.Services.AddControllersWithViews();

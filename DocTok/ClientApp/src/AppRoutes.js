@@ -1,7 +1,7 @@
 import Projects from "./components/projects/Projects.tsx";
 import { Home } from "./components/home/Home";
 import { Calendar } from "./components/calendar/calendar";
-import { Documentation } from "./components/documentation/DocumentationDeprecated.js";
+import Documentation from "./components/documentation/Documentation.tsx";
 
 const AppRoutes = [
   {
@@ -18,7 +18,7 @@ const AppRoutes = [
   },
   {
     path: '/documentation/:id',
-    element:  <Documentation/>
+    element:  <Documentation />
   }
 ];
 

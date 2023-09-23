@@ -1,18 +1,19 @@
 import React, { useEffect, useState} from 'react';
 import ProjectCard from "../projects/ProjectCard.tsx";
-import IProject from '../../models/responseModels/IProject';
+import IProject from '../../models/responseModels/projects/IProject.ts';
 import './Projects.scss'
+import ProjectService from '../../services/ProjectService.ts';
 
 export default function Projects(){
   const [projects, setProjects] = useState<IProject[]>();
+  const projectService = new ProjectService()
 
   useEffect(() => {
     getProjects()
   },[])
 
   const getProjects =async () => {
-    const response = await fetch('https://localhost:7048/Projects');
-    const data = await response.json();
+    const data = await projectService.get();
     setProjects(data);
   }
 

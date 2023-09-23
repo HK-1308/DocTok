@@ -15,7 +15,7 @@ export default function ProjectCard(props: IProjectCardProps){
   const navigate = useNavigate();
 
   const ProjectCardClick = ()=>{
-    navigate(`/projects/${props.id}`)
+    navigate(`/documentation/${props.id}`)
   }
 
   return(

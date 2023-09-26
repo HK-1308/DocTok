@@ -9,10 +9,10 @@ export default function Projects(){
   const projectService = new ProjectService()
 
   useEffect(() => {
-    getProjects()
+    fetchProjects()
   },[])
 
-  const getProjects =async () => {
+  const fetchProjects = async () => {
     const data = await projectService.get();
     setProjects(data);
   }

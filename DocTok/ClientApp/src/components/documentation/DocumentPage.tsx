@@ -2,29 +2,28 @@ import React, { useCallback, useEffect, useState } from 'react';
 import TinymceEditor from './TinymceEditor/TinymceEditor';
 import {locale} from "../../resources/locales/locale"
 import IDocumentPage from '../../models/responseModels/documentation/IDocumentPage';
+import DocumentList from './DocumentList';
+import DocumentService from '../../services/DocumentService';
+
 
 export default function Documentation(){
-    const [pages,setPages] = useState<IDocumentPage>()
+    const [document, setDocument] = useState<IDocumentPage>()
 
     useEffect(() => {
-        getDocumentPage()
+      fetchDocumentPage()
     },[])
 
-    const getDocumentPage = async () => {
+    const documentService = new DocumentService();
 
+    const fetchDocumentPage = async () => {
+      const data = await documentService.getById(1);
+      setDocument(data);
     }
+    
     return(
         <div style={{"display": "flex"}}>
             <div className="pages-side-bar" style={{"width": "15%", "backgroundColor": "#FFFAFA"}}>
-              {/* <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder= {`${locale.sideBarElements.search}`} />
-                </Form.Group>
-              </Form>
-                {this.state.pages}
-                <Button style={{width: "100%"}} variant="primary" onClick={this.AddNewTinymceClickHandler}>{locale.sideBarElements.addNewPage}</Button>
-              </Tab.Container> */}
+              <DocumentList/>
             </div>
             <div style={{width: "85%", }}>
               <div style={{"display": "flex", "justifyContent": "space-around"}}>

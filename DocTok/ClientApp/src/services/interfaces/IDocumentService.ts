@@ -1,4 +1,4 @@
-import IDocumentPage from "../../models/responseModels/documentation/IDocumentPage";
+import IDocumentPage from "../../models/responseModels/IDocumentPage";
 
 export default interface IDocumentService{
     get() : Promise<IDocumentPage[]>

@@ -1,4 +1,4 @@
-import IProject from "../models/responseModels/projects/IProject";
+import IProject from "../models/responseModels/IProject";
 import IProjectService from "./interfaces/IProjectService";
 import axios from 'axios';
 

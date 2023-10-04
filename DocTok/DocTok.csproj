@@ -34,6 +34,7 @@
     <ProjectReference Include="..\DocTok.BusinessLayer\DocTok.BusinessLayer.csproj" />
     <ProjectReference Include="..\DocTok.DataAccess\DocTok.DataAccess.csproj" />
     <ProjectReference Include="..\DocTok.Shared\DocTok.Shared.csproj" />
+    <ProjectReference Include="..\DocTok.Dependencies\DocTok.Dependencies.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

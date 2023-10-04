@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DocTok.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("projects")]
     public class ProjectsController : ControllerBase
     {
         private readonly IProjectService projectService; 

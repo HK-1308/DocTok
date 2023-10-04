@@ -1,4 +1,4 @@
-import IProject from "../../models/responseModels/projects/IProject";
+import IProject from "../../models/responseModels/IProject";
 
 export default interface IProjectService{
     get() : Promise<IProject[]>

@@ -1,7 +1,4 @@
-using DocTok.BusinessLayer.Interfaces;
-using DocTok.BusinessLayer.Services;
-using DocTok.DataAccess.Interfaces;
-using DocTok.DataAccess.Repositories;
+using DocTok.Dependencies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,15 +11,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("https://localhost:44416");  
+            policy.WithOrigins("https://localhost:44416");
         });
 });
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IProjectRepository, ProjectRepository>();
-builder.Services.AddTransient<IProjectService, ProjectService>();
-
+builder.Services.AddServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

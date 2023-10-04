@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import TinymceEditor from './TinymceEditor/TinymceEditor';
 import {locale} from "../../resources/locales/locale"
-import IDocumentPage from '../../models/responseModels/documentation/IDocumentPage';
+import IDocumentPage from '../../models/responseModels/IDocumentPage';
 import DocumentList from './DocumentList';
 import DocumentService from '../../services/DocumentService';
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import DocumentService from '../../services/DocumentService';
-import IDocumentPage from '../../models/responseModels/documentation/IDocumentPage';
+import IDocumentPage from '../../models/responseModels/IDocumentPage';
 
 export default function DocumentList(){
     const [documents, setDocuments] = useState<IDocumentPage[]>();

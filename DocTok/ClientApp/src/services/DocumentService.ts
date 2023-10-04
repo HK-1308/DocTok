@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import IDocumentService from './interfaces/IDocumentService';
-import IDocumentPage from '../models/responseModels/documentation/IDocumentPage';
+import IDocumentPage from '../models/responseModels/IDocumentPage';
 
 export default class DocumentService implements IDocumentService{
     public async get(): Promise<IDocumentPage[]> {

@@ -1,8 +1,9 @@
 export default interface IDocumentPage{
     id: number,
     caption: string,
-    parentId: number,
+    parentId: number | null,
     content: string,
-    updateDateTime: Date,
-    createDateTime: Date,
+    updatedOn: Date,
+    createdOn: Date,
+    createdBy: number,
 }

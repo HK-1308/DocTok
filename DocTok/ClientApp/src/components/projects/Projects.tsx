@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import ProjectCard from "../projects/ProjectCard.tsx";
-import IProject from '../../models/responseModels/projects/IProject.ts';
+import IProject from '../../models/responseModels/IProject.ts';
 import './Projects.scss'
 import ProjectService from '../../services/ProjectService.ts';
 

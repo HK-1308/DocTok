@@ -18,13 +18,13 @@ export default function DocumentList(){
     }
 
     return(
-        <div>
+        <div style={{height: "100%",}}>
             <div style={{padding: "5px"}}>
                 <Form.Control type="text" placeholder="Поиск..." />
             </div>
-            <div>
+            <div style={{height: "100%", overflow: "auto",}}>
                 <ListGroup as="ol">
-                    {documents?.map((document) => <ListGroup.Item action as="li">{document.caption}</ListGroup.Item> )}
+                    {documents?.map((document) => <ListGroup.Item key={document.id} action as="li">{document.caption}</ListGroup.Item> )}
                 </ListGroup>
             </div>
         </div>

@@ -43,5 +43,10 @@ namespace DocTok.DataAccess.Repositories
 
             return list;
         }
+
+        public async Task<Document> Create(Document document)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

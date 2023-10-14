@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DocTok.Shared.Entities
+﻿namespace DocTok.Shared.Entities
 {
     public class Project
     {
@@ -14,7 +8,8 @@ namespace DocTok.Shared.Entities
 
         public string Description { get; set; }
 
-        //TODO Сделать здесь ImageId
         public string ImageName { get; set; }
+
+        public List<User> User { get; set;}
     }
 }

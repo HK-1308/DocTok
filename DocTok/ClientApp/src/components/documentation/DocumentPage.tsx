@@ -22,7 +22,7 @@ export default function Documentation(){
     
     return(
         <div style={{"display": "flex"}}>
-            <div className="pages-side-bar" style={{"width": "15%", "backgroundColor": "#FFFAFA"}}>
+            <div className="pages-side-bar" style={{"width": "15%", "backgroundColor": "#FFFAFA", "height": "calc(100vh - 105px)",}}>
               <DocumentList/>
             </div>
             <div style={{width: "85%", }}>

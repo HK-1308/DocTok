@@ -1,5 +1,6 @@
 ﻿using DocTok.BusinessLayer.Interfaces;
 using DocTok.BusinessLayer.Services;
+using DocTok.Shared.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocTok.Controllers
@@ -36,6 +37,15 @@ namespace DocTok.Controllers
         public async Task<ActionResult> GetByProjectId(int id)
         {
             return Ok(await documentService.GetByProjectId(id));
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Create(Document document)
+        {
+            return Ok(await documentService.Create(document));
         }
     }
 }

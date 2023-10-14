@@ -27,5 +27,10 @@ namespace DocTok.BusinessLayer.Services
         {
             return await documentRepository.GetByProjectId(id);
         }
+
+        public async Task<Document> Create(Document document)
+        {
+            return await documentRepository.Create(document);
+        }
     }
 }

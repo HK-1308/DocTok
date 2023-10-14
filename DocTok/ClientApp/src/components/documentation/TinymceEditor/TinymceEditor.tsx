@@ -5,6 +5,7 @@ import {locale} from "../../../resources/locales/locale"
 export default function TinymceEditor(){
     return(<Editor       
         id = "content"
+        apiKey="ykc9e3k0mp7zs5yj0ft2uhb3md3fym6dor27349g36eysg59"
         init={{
           width: "100%",
           language: locale.tinymceLocale,
@@ -61,7 +62,8 @@ export default function TinymceEditor(){
           noneditable_noneditable_class: 'mceNonEditable',
           toolbar_mode: 'sliding',
           contextmenu: 'link image imagetools table',
-          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+          content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+          //images_upload_url:
         }}
       />)
 }

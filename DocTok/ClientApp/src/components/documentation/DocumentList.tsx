@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import DocumentService from '../../services/DocumentService';
 import IDocumentPage from '../../models/responseModels/IDocumentPage';
+import Form from 'react-bootstrap/esm/Form';
 
 export default function DocumentList(){
     const [documents, setDocuments] = useState<IDocumentPage[]>();
@@ -17,8 +18,15 @@ export default function DocumentList(){
     }
 
     return(
-        <ListGroup as="ol">
-            {documents?.map((document) => <ListGroup.Item action as="li">{document.caption}</ListGroup.Item> )}
-        </ListGroup>
+        <div>
+            <div style={{padding: "5px"}}>
+                <Form.Control type="text" placeholder="Поиск..." />
+            </div>
+            <div>
+                <ListGroup as="ol">
+                    {documents?.map((document) => <ListGroup.Item action as="li">{document.caption}</ListGroup.Item> )}
+                </ListGroup>
+            </div>
+        </div>
     )
 }

@@ -4,12 +4,12 @@ import axios from 'axios';
 
 export default class ProjectService implements IProjectService{
     public async get(): Promise<IProject[]> {
-        const response = await axios.get('/Projects')
+        const response = await axios.get('/projects')
         return response.data
     }
 
     public async getById(id: number): Promise<IProject> {
-        const response = await axios.get('/Projects')
+        const response = await axios.get('/projects')
         return response.data
     }
     

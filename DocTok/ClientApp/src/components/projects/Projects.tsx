@@ -13,6 +13,7 @@ export default function Projects(){
   },[])
 
   const fetchProjects = async () => {
+    debugger
     const data = await projectService.get();
     setProjects(data);
   }

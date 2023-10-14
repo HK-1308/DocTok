@@ -15,7 +15,7 @@ export default class DocumentService implements IDocumentService{
     }
     
     public async getByProjectId(id: number): Promise<IDocumentPage[]> {
-        const response = await axios.get(`/documents/projectId/${id}`)
+        const response = await axios.get(`/documents/project/${id}`)
         return response.data
     }
 }

@@ -1,4 +1,6 @@
 using DocTok.Dependencies;
+using DocTok.Shared.Settings;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,10 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("https://localhost:44416");
         });
 });
+
+//TODO довести до ума логику получения sqlConnnetionString
+string connection = builder.Configuration.GetConnectionString("localDb");
+builder.Services.AddDbContext<DocTokContext>(options => options.UseSqlServer(connection));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();

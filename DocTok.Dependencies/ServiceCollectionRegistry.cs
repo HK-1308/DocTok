@@ -13,8 +13,11 @@ namespace DocTok.Dependencies
             services.AddTransient<IProjectRepository, ProjectRepository>();
             services.AddTransient<IProjectService, ProjectService>();
 
-            services.AddTransient<IDocumentService, DocumentService>();
             services.AddTransient<IDocumentRepository, DocumentRepository>();
+            services.AddTransient<IDocumentService, DocumentService>();
+
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

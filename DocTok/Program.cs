@@ -24,6 +24,27 @@ builder.Services.AddDbContext<DocTokContext>(options => options.UseSqlServer(con
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServices();
+
+//builder.Services.AddAuthentication(opt =>
+//{
+//    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//}).AddJwtBearer(options =>
+//{
+//    options.TokenValidationParameters = new TokenValidationParameters
+//    {
+//        ValidateIssuer = true,
+//        ValidateAudience = true,
+//        ValidateLifetime = true,
+//        ValidateIssuerSigningKey = true,
+//        ValidIssuer = jwtSettings["validIssuer"],
+//        ValidAudience = jwtSettings["validAudience"],
+//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+//            .GetBytes(jwtSettings.GetSection("securityKey").Value))
+//    };
+//});
+//builder.Services.AddScoped<JwtHandler>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +61,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseCors(MyAllowSpecificOrigins);
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

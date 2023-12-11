@@ -1,20 +1,20 @@
 
 import axios from 'axios';
 import IDocumentService from './interfaces/IDocumentService';
-import IDocumentPage from '../models/responseModels/IDocumentPage';
+import DocumentPage from '../models/responseModels/DocumentPage';
 
 export default class DocumentService implements IDocumentService{
-    public async get(): Promise<IDocumentPage[]> {
+    public async get(): Promise<DocumentPage[]> {
         const response = await axios.get('/documents')
         return response.data
     }
 
-    public async getById(id: number): Promise<IDocumentPage> {
+    public async getById(id: number): Promise<DocumentPage> {
         const response = await axios.get(`/documents/${id}`)
         return response.data
     }
     
-    public async getByProjectId(id: number): Promise<IDocumentPage[]> {
+    public async getByProjectId(id: number): Promise<DocumentPage[]> {
         const response = await axios.get(`/documents/project/${id}`)
         return response.data
     }

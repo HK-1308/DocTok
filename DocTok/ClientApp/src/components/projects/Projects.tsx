@@ -1,11 +1,11 @@
 import React, { useEffect, useState} from 'react';
 import ProjectCard from "../projects/ProjectCard.tsx";
-import IProject from '../../models/responseModels/IProject.ts';
+import Project from '../../models/responseModels/Project.ts';
 import './Projects.scss'
 import ProjectService from '../../services/ProjectService.ts';
 
 export default function Projects(){
-  const [projects, setProjects] = useState<IProject[]>();
+  const [projects, setProjects] = useState<Project[]>();
   const projectService = new ProjectService()
 
   useEffect(() => {

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
 import DocumentService from '../../services/DocumentService';
-import IDocumentPage from '../../models/responseModels/IDocumentPage';
+import DocumentPage from '../../models/responseModels/DocumentPage';
 import Form from 'react-bootstrap/esm/Form';
+import Nav from 'react-bootstrap/Nav';
 
-export default function DocumentList(){
-    const [documents, setDocuments] = useState<IDocumentPage[]>();
+interface IDocumentListProps{
+    onSelectedCallback: (id: number) => Promise<void>,
+}
+
+export default function DocumentList(props: IDocumentListProps){
+    const [documents, setDocuments] = useState<DocumentPage[]>();
     const documentService = new DocumentService();
 
     useEffect(() => {
@@ -17,15 +21,23 @@ export default function DocumentList(){
         setDocuments(data);
     }
 
+    const onSelectHandler = async (id: number) =>{
+        await props.onSelectedCallback(id);
+    }
+
     return(
         <div style={{height: "100%",}}>
             <div style={{padding: "5px"}}>
                 <Form.Control type="text" placeholder="Поиск..." />
             </div>
             <div style={{height: "100%", overflow: "auto",}}>
-                <ListGroup as="ol">
-                    {documents?.map((document) => <ListGroup.Item key={document.id} action as="li">{document.caption}</ListGroup.Item> )}
-                </ListGroup>
+                <Nav variant="pills" className="flex-column">
+                    <Nav.Item>
+                        {documents?.map((document) => 
+                            <Nav.Link key={document.id} eventKey={document.id} onClick={() => onSelectHandler(document.id)} >{document.caption}</Nav.Link> 
+                        )}
+                    </Nav.Item>
+                </Nav>
             </div>
         </div>
     )

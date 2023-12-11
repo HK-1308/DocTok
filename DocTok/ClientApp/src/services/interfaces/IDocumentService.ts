@@ -1,9 +1,9 @@
-import IDocumentPage from "../../models/responseModels/IDocumentPage";
+import DocumentPage from "../../models/responseModels/DocumentPage";
 
 export default interface IDocumentService{
-    get() : Promise<IDocumentPage[]>
+    get() : Promise<DocumentPage[]>
     
-    getById(id : number) : Promise<IDocumentPage>
+    getById(id : number) : Promise<DocumentPage>
 
-    getByProjectId(id : number) : Promise<IDocumentPage[]>
+    getByProjectId(id : number) : Promise<DocumentPage[]>
 }

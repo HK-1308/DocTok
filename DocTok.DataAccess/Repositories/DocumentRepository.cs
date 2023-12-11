@@ -1,48 +1,25 @@
 ﻿using DocTok.DataAccess.Interfaces;
 using DocTok.Shared.Entities;
+using DocTok.Shared.Settings;
+using Microsoft.EntityFrameworkCore;
 
 namespace DocTok.DataAccess.Repositories
 {
     public class DocumentRepository : IDocumentRepository
     {
-        public Task<IEnumerable<Document>> Get()
+        private readonly DocTokContext db;
+
+        public DocumentRepository(DocTokContext db)
         {
-            throw new NotImplementedException();
+            this.db = db;
         }
 
-        public Task<Document> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<Document>> Get() => await db.Documents.ToListAsync();
 
-        public async Task<IEnumerable<Document>> GetByProjectId(int id)
-        {
-            var list = new List<Document>
-            {
-                new Document() { Id = 1, Caption = "ДОкменуа",},
-                new Document() { Id = 2, Caption = "Документ" },
-                new Document() { Id = 3, Caption = "Документ" },
-                new Document() { Id = 4, Caption = "Документ" },
-                new Document() { Id = 5, Caption = "Документ" },
-                new Document() { Id = 6, Caption = "Документ" },
-                new Document() { Id = 7, Caption = "Документ" },
-                new Document() { Id = 8, Caption = "Документ" },
-                new Document() { Id = 9, Caption = "Документ" },
-                new Document() { Id = 10, Caption = "Документ" },
-                new Document() { Id = 11, Caption = "Документ" },
-                new Document() { Id = 12, Caption = "Документ" },
-                new Document() { Id = 13, Caption = "Документ" },
-                new Document() { Id = 14, Caption = "Документ" },
-                new Document() { Id = 15, Caption = "Документ" },
-                new Document() { Id = 16, Caption = "Документ" },
-                new Document() { Id = 17, Caption = "Документ" },
-                new Document() { Id = 18, Caption = "Документ" },
-                new Document() { Id = 19, Caption = "Документ" },
-                new Document() { Id = 20, Caption = "Документ" },
-            };
-
-            return list;
-        }
+        public async Task<Document> GetById(int id) => await db.Documents.SingleOrDefaultAsync(document => document.Id == id);
+        
+        //TODO: сделать реальную выборку по id проекта (пока просто в базе не хранится id проекта)
+        public async Task<IEnumerable<Document>> GetByProjectId(int id) => await db.Documents.ToListAsync();
 
         public async Task<Document> Create(Document document)
         {

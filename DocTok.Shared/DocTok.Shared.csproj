@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Folder Include="RequestModels\" />
-    <Folder Include="ResponseModels\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,10 @@
 
         public string Content { get; set; }
 
+        public int ProjectId { get; set; } = 1;
+
+        public virtual Project Project { get; set; }
+
         public DateTime UpdatedOn { get ; set; }
 
         public DateTime CreatedOn { get; set; }

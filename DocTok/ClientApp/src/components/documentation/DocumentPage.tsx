@@ -1,12 +1,19 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import TinymceEditor from './TinymceEditor/TinymceEditor';
 import {locale} from "../../resources/locales/locale"
 import DocumentPage from '../../models/responseModels/DocumentPage';
 import DocumentList from './DocumentList';
 import DocumentService from '../../services/DocumentService';
+import { useParams } from 'react-router-dom';
+
+type DocumentationParams = {
+  projectId: string;
+};
 
 export default function Documentation(){
     const [document, setDocument] = useState<DocumentPage>()
+
+    const { projectId } = useParams<DocumentationParams>();
 
     const documentService = new DocumentService();
 
@@ -17,14 +24,12 @@ export default function Documentation(){
 
     const onDocumentChanged = async (id: number)=>{
       await fetchDocumentPage(id);
-      console.log(document)
-      //TODO: Генерация страницы Tinymce
     }
     
     return(
         <div style={{"display": "flex"}}>
             <div className="pages-side-bar" style={{"width": "15%", "backgroundColor": "#FFFAFA", "height": "calc(100vh - 105px)",}}>
-              <DocumentList onSelectedCallback={onDocumentChanged}/>
+              <DocumentList projectId={Number(projectId)}  onSelectedCallback={onDocumentChanged}/>
             </div>
             <div style={{width: "85%", }}>
               <div style={{"display": "flex", "justifyContent": "space-around"}}>

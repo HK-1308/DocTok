@@ -11,5 +11,7 @@
         public string ImageName { get; set; }
 
         public List<User> User { get; set;}
+
+        public IEnumerable<Document> Documents { get; set; }
     }
 }

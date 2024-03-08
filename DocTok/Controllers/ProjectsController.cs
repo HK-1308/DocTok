@@ -1,8 +1,10 @@
 ﻿using DocTok.BusinessLayer.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocTok.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("projects")]
     public class ProjectsController : ControllerBase

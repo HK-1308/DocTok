@@ -19,7 +19,7 @@ namespace DocTok.DataAccess.Repositories
         public async Task<Document> GetById(int id) => await db.Documents.SingleOrDefaultAsync(document => document.Id == id);
         
         //TODO: сделать реальную выборку по id проекта (пока просто в базе не хранится id проекта)
-        public async Task<IEnumerable<Document>> GetByProjectId(int id) => await db.Documents.ToListAsync();
+        public async Task<IEnumerable<Document>> GetByProjectId(int id) => await db.Documents.Where(document => document.ProjectId == id).ToListAsync();
 
         public async Task<Document> Create(Document document)
         {

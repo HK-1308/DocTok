@@ -1,4 +1,4 @@
-export default interface Project {
+export default interface User {
     id: number,
     username: string,
     hash: string,

@@ -1,6 +1,21 @@
 let locale = {
     tinymceLocale:"ru",
 
+    authentication:{
+        login: "Войти",
+        register: "Регистрация",
+    },
+
+    buttons:{
+        submit: "Подтвердить",
+        close: "Закрыть",
+        automated:"Генерация графика",
+        save: "Сохранить",
+        delete: "Удалить",
+        edit: "Редактировать",
+        cancel: "Отмена",
+    },
+
     main:{
         yourProjects: "Ваши проекты",
     },
@@ -29,20 +44,26 @@ let locale = {
         addNewEvent:"Добавить новое событие",
         search:"Поиск",
     },
-
-    buttons:{
-        submit: "Подтвердить",
-        close: "Закрыть",
-        automated:"Генерация графика",
-        save: "Сохранить",
-        delete: "Удалить",
-        edit: "Редактировать",
-        cancel: "Отмена",
-    }
 }
 
 const locale_en = {
     tinymceLocale:"en-US",
+
+    authentication:{
+        login: "Login",
+        register: "Register",
+    },
+
+    buttons:{
+        submit: "Submit",
+        close: "Close",
+        automated:"Shedule generation",
+        save: "Save",
+        delete: "Delete",
+        edit: "Edit",
+        cancel: "Cancel",
+    },
+
     main:{
         yourProjects: "Your projects",
     },
@@ -71,16 +92,6 @@ const locale_en = {
         addNewEvent:"Add new event",
         search:"Search",
     },
-
-    buttons:{
-        submit: "Submit",
-        close: "Close",
-        automated:"Shedule generation",
-        save: "Save",
-        delete: "Delete",
-        edit: "Edit",
-        cancel: "Cancel",
-    }
 }
 
 var lang = navigator.language || navigator.userLanguage

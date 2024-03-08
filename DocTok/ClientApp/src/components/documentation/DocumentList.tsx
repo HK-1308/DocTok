@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/esm/Form';
 import Nav from 'react-bootstrap/Nav';
 
 interface IDocumentListProps{
+    projectId: number,
     onSelectedCallback: (id: number) => Promise<void>,
 }
 
@@ -17,7 +18,7 @@ export default function DocumentList(props: IDocumentListProps){
     },[])
 
     const fetchDocumentList = async () => {
-        const data = await documentService.getByProjectId(1);
+        const data = await documentService.getByProjectId(props.projectId);
         setDocuments(data);
     }
 
@@ -34,7 +35,9 @@ export default function DocumentList(props: IDocumentListProps){
                 <Nav variant="pills" className="flex-column">
                     <Nav.Item>
                         {documents?.map((document) => 
-                            <Nav.Link key={document.id} eventKey={document.id} onClick={() => onSelectHandler(document.id)} >{document.caption}</Nav.Link> 
+                            <Nav.Link key={document.id} eventKey={document.id} onClick={() => onSelectHandler(document.id)} >{document.caption}
+                            
+                            </Nav.Link> 
                         )}
                     </Nav.Item>
                 </Nav>

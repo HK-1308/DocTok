@@ -1,14 +1,11 @@
 ﻿using DocTok.BusinessLayer.Interfaces;
-using DocTok.BusinessLayer.Services;
 using DocTok.Shared.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocTok.Controllers
 {
     [ApiController]
     [Route("documents")]
-
     public class DocumentController : ControllerBase
     {
         private readonly IDocumentService documentService;

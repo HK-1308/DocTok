@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DocTok.Shared.Migrations
 {
     [DbContext(typeof(DocTokContext))]
-    [Migration("20231015203446_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231214201755_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,10 +50,15 @@ namespace DocTok.Shared.Migrations
                     b.Property<int?>("ParentId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Documents");
                 });
@@ -133,7 +138,7 @@ namespace DocTok.Shared.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Hash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -161,6 +166,17 @@ namespace DocTok.Shared.Migrations
                     b.ToTable("ProjectUser");
                 });
 
+            modelBuilder.Entity("DocTok.Shared.Entities.Document", b =>
+                {
+                    b.HasOne("DocTok.Shared.Entities.Project", "Project")
+                        .WithMany("Documents")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("ProjectUser", b =>
                 {
                     b.HasOne("DocTok.Shared.Entities.Project", null)
@@ -174,6 +190,11 @@ namespace DocTok.Shared.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DocTok.Shared.Entities.Project", b =>
+                {
+                    b.Navigation("Documents");
                 });
 #pragma warning restore 612, 618
         }

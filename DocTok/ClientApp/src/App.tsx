@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import globalRouter from "./globalRouter";

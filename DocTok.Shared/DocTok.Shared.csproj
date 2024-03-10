@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="RequestModels\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 

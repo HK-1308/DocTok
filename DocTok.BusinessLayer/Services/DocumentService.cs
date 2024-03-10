@@ -1,6 +1,7 @@
 ﻿using DocTok.BusinessLayer.Interfaces;
 using DocTok.DataAccess.Interfaces;
 using DocTok.Shared.Entities;
+using DocTok.Shared.RequestModels.Document;
 
 namespace DocTok.BusinessLayer.Services
 {
@@ -28,9 +29,19 @@ namespace DocTok.BusinessLayer.Services
             return await documentRepository.GetByProjectId(id);
         }
 
-        public async Task<Document> Create(Document document)
+        public async Task<Document> Create(DocumentRequestModel document)
         {
             return await documentRepository.Create(document);
+        }
+
+        public async Task<Document> Update(DocumentRequestModel document)
+        {
+            return await documentRepository.Update(document);
+        }
+
+        public async Task Delete(int id)
+        {
+            await documentRepository.Delete(id);
         }
     }
 }

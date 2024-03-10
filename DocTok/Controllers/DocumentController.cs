@@ -1,5 +1,5 @@
 ﻿using DocTok.BusinessLayer.Interfaces;
-using DocTok.Shared.Entities;
+using DocTok.Shared.RequestModels.Document;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocTok.Controllers
@@ -58,9 +58,37 @@ namespace DocTok.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> Create(Document document)
+        public async Task<ActionResult> Create(DocumentRequestModel document)
         {
+            //TODO реализовать хранение контента документа в файлах на сервере. (В конечном счете конечно лучше интегрировать облачный сервис)
             return Ok(await documentService.Create(document));
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Update(DocumentRequestModel document)
+        {
+            //TODO реализовать хранение контента документа в файлах на сервере. (В конечном счете конечно лучше интегрировать облачный сервис)
+            return Ok(await documentService.Update(document));
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                await documentService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

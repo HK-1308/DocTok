@@ -1,4 +1,5 @@
 ﻿using DocTok.Shared.Entities;
+using DocTok.Shared.RequestModels.Document;
 
 namespace DocTok.BusinessLayer.Interfaces
 {
@@ -10,6 +11,10 @@ namespace DocTok.BusinessLayer.Interfaces
 
         public Task<IEnumerable<Document>> GetByProjectId(int id);
 
-        public Task<Document> Create(Document document);
+        public Task<Document> Create(DocumentRequestModel document);
+
+        public Task<Document> Update(DocumentRequestModel document);
+
+        public Task Delete(int id);
     }
 }

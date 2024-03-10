@@ -5,13 +5,15 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocTok", "DocTok\DocTok.csproj", "{527BDDDE-E7DB-40D9-B33B-FBE27C12CB6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocTok.DataAccess", "DocTok.DataAccess\DocTok.DataAccess.csproj", "{EB3D615F-567F-44BF-9274-35C31685A609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocTok.DataAccess", "DocTok.DataAccess\DocTok.DataAccess.csproj", "{EB3D615F-567F-44BF-9274-35C31685A609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocTok.BusinessLayer", "DocTok.BusinessLayer\DocTok.BusinessLayer.csproj", "{64C1F130-5CD8-489B-A9B4-40BDC3A6750A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocTok.BusinessLayer", "DocTok.BusinessLayer\DocTok.BusinessLayer.csproj", "{64C1F130-5CD8-489B-A9B4-40BDC3A6750A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocTok.Shared", "DocTok.Shared\DocTok.Shared.csproj", "{041BCF1C-6700-4E67-A19D-225F5D508960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocTok.Shared", "DocTok.Shared\DocTok.Shared.csproj", "{041BCF1C-6700-4E67-A19D-225F5D508960}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocTok.Dependencies", "DocTok.Dependencies\DocTok.Dependencies.csproj", "{F810B0DE-D9BB-4C56-AE0C-67F392B9F8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocTok.Dependencies", "DocTok.Dependencies\DocTok.Dependencies.csproj", "{F810B0DE-D9BB-4C56-AE0C-67F392B9F8E0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D4BF4C8F-62A4-4741-A865-8C0A45DF8C88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F810B0DE-D9BB-4C56-AE0C-67F392B9F8E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F810B0DE-D9BB-4C56-AE0C-67F392B9F8E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F810B0DE-D9BB-4C56-AE0C-67F392B9F8E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BF4C8F-62A4-4741-A865-8C0A45DF8C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BF4C8F-62A4-4741-A865-8C0A45DF8C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BF4C8F-62A4-4741-A865-8C0A45DF8C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BF4C8F-62A4-4741-A865-8C0A45DF8C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

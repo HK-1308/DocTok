@@ -54,6 +54,15 @@ namespace DocTok.Controllers
             return Ok(await documentService.GetByProjectId(id));
         }
 
+        [HttpGet("hierarchy/project/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> GetHierarchyByProjectId(int id)
+        {
+            return Ok(await documentService.GetHierarchyByProjectId(id));
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

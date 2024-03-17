@@ -1,6 +1,8 @@
 ﻿using DocTok.DataAccess.Interfaces;
 using DocTok.Shared.Entities;
 using DocTok.Shared.RequestModels.Document;
+using DocTok.Shared.ResponseModels.Document;
+using DocTok.Shared.ResponseModels.Document.Detail;
 using DocTok.Shared.Settings;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,10 +19,75 @@ namespace DocTok.DataAccess.Repositories
 
         public async Task<IEnumerable<Document>> Get() => await db.Documents.ToListAsync();
 
-        public async Task<Document> GetById(int id) => await db.Documents.SingleOrDefaultAsync(document => document.Id == id);
+        public async Task<DocumentDetailResponseModel> GetById(int id) 
+        {
+            var document = await db.Documents.SingleOrDefaultAsync(document => document.Id == id);
+            var documentResponseModels = new DocumentDetailResponseModel
+            {
+                Id = document.Id,
+                Caption = document.Caption,
+                Content = document.Content,
+                CreatedBy = document.CreatedBy,
+                ParentId = document.ParentId,
+                ProjectId = document.ProjectId,
+                Childs = db.Documents.Where(d => d.ParentId == document.Id).Select(d =>
+                new DocumentHierarсhyModel
+                {
+                    Id = d.Id,
+                    Caption = d.Caption,
+                    ParentId = d.ParentId,
+                }).ToList(),
+            };
+            return documentResponseModels;
+        }
 
-        //TODO: сделать реальную выборку по id проекта (пока просто в базе не хранится id проекта)
-        public async Task<IEnumerable<Document>> GetByProjectId(int id) => await db.Documents.Where(document => document.ProjectId == id).ToListAsync();
+        public async Task<IEnumerable<DocumentHierarсhyModel>> GetHierarchyByProjectId(int id) 
+        {
+            var projectDocuments = await db.Documents.Where(document => document.ProjectId == id).Select(d =>
+                new DocumentHierarсhyModel
+                {
+                    Id = d.Id,
+                    Caption = d.Caption,
+                    ParentId = d.ParentId,
+                }).ToListAsync();
+            var documents = projectDocuments.Where(document => document.ParentId == 0);
+
+            if(documents != null)
+            {
+                foreach(var document in documents)
+                {
+                    var stack = new Stack<DocumentHierarсhyModel>();
+                    stack.Push(document);
+                    while(stack.Count > 0)
+                    {
+                        var currentDocument = stack.Pop();
+                        if(currentDocument == null)
+                        {
+                            continue;
+                        }
+                        currentDocument.Childs = projectDocuments.Where(document => document.ParentId == currentDocument.Id).ToList();
+                        foreach(var child  in currentDocument.Childs)
+                        {
+                            stack.Push(child);
+                        }
+                    }
+                }
+            }
+
+            return documents;
+        }
+
+        public async Task<IEnumerable<DocumentHierarсhyModel>> GetByProjectId(int id)
+        {
+            var documents = await db.Documents.Where(document => document.ProjectId == id).Select(d =>
+                new DocumentHierarсhyModel
+                {
+                    Id = d.Id,
+                    Caption = d.Caption,
+                    ParentId = d.ParentId,
+                }).ToListAsync();
+            return documents;
+        }
 
         public async Task<Document> Create(DocumentRequestModel documentRequestModel)
         {

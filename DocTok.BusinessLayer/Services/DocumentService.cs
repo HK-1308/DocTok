@@ -2,6 +2,8 @@
 using DocTok.DataAccess.Interfaces;
 using DocTok.Shared.Entities;
 using DocTok.Shared.RequestModels.Document;
+using DocTok.Shared.ResponseModels.Document;
+using DocTok.Shared.ResponseModels.Document.Detail;
 
 namespace DocTok.BusinessLayer.Services
 {
@@ -19,14 +21,14 @@ namespace DocTok.BusinessLayer.Services
             return await documentRepository.Get();
         }
 
-        public async Task<Document> GetById(int id)
+        public async Task<DocumentDetailResponseModel> GetById(int id)
         {
             return await documentRepository.GetById(id);
         }
 
-        public async Task<IEnumerable<Document>> GetByProjectId(int id)
+        public async Task<IEnumerable<DocumentHierarсhyModel>> GetHierarchyByProjectId(int id)
         {
-            return await documentRepository.GetByProjectId(id);
+            return await documentRepository.GetHierarchyByProjectId(id);
         }
 
         public async Task<Document> Create(DocumentRequestModel document)
@@ -42,6 +44,11 @@ namespace DocTok.BusinessLayer.Services
         public async Task Delete(int id)
         {
             await documentRepository.Delete(id);
+        }
+
+        public async Task<IEnumerable<DocumentHierarсhyModel>> GetByProjectId(int id)
+        {
+            return await documentRepository.GetByProjectId(id);
         }
     }
 }

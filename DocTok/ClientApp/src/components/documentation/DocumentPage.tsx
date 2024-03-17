@@ -1,37 +1,29 @@
 import React, { useState } from 'react';
 import TinymceEditor from './TinymceEditor/TinymceEditor';
 import {locale} from "../../resources/locales/locale"
-import DocumentPage from '../../models/responseModels/DocumentPage';
 import DocumentList from './DocumentList';
-import DocumentService from '../../services/DocumentService';
 import { useParams } from 'react-router-dom';
+import { DocumentPageDetailResponseModel } from '../../models/responseModels/Detail/DocumentDetailResponseModel';
 
 type DocumentationParams = {
   projectId: string;
 };
 
 export default function Documentation(){
-    const [document, setDocument] = useState<DocumentPage>()
+    const [document, setDocument] = useState<DocumentPageDetailResponseModel>()
 
     const { projectId } = useParams<DocumentationParams>();
 
-    const documentService = new DocumentService();
-
-    const fetchDocumentPage = async (id: number) => {
-      const data = await documentService.getById(id);
-      setDocument(data);
-    }
-
-    const onDocumentChanged = async (id: number)=>{
-      await fetchDocumentPage(id);
+    const onDocumentChanged = async (document: DocumentPageDetailResponseModel)=>{
+      setDocument(document);
     }
     
     return(
         <div style={{"display": "flex"}}>
-            <div className="pages-side-bar" style={{"width": "15%", "backgroundColor": "#FFFAFA", "height": "calc(100vh - 105px)",}}>
+            <div className="pages-side-bar" style={{"width": "20%", "backgroundColor": "#FFFAFA", "height": "calc(100vh - 105px)",}}>
               <DocumentList projectId={Number(projectId)}  onSelectedCallback={onDocumentChanged}/>
             </div>
-            <div style={{width: "85%", }}>
+            <div style={{width: "80%", }}>
               <div style={{"display": "flex", "justifyContent": "space-around"}}>
                 <TinymceEditor content={document?.content}></TinymceEditor>
               </div>
